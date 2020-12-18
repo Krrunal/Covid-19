@@ -1,0 +1,18 @@
+<script src="../../backend/js/plugins/jquery-3.3.1.min.js"></script>
+<!-- Password Validator -->
+<script src="../../backend/password/jquery.password.js"></script>
+<script src="../../backend/js/plugins/bootstrap.bundle.min.js"></script>
+
+<script src="../../backend/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="../../backend/js/scripts/script.min.js"></script>
+        <script src="../../backend/js/scripts/sidebar.compact.script.min.js"></script>
+        <script src="../../backend/js/scripts/customizer.script.min.js"></script>
+
+<script>
+    $(function() {
+        $('#password').password({
+            minLength:6,
+            strengthIndicator:$('#strongy'),
+        });
+    });
+</script>

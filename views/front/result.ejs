@@ -1,0 +1,119 @@
+<%- include elements/header.ejs %> 
+ 
+<div id="wrap" class="grid_1200">
+	
+<div id="pageloader">
+        <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+     </div>
+    <div id="header-top">
+       <section class="container clearfix">
+           <nav class="header-top-nav">
+               <ul>
+                    <li><a href="javascript:void(0)"><i class="icon-user"></i>
+                        <%=localName.charAt(0).toUpperCase() + localName.slice(1) %>
+                    </a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-check-square-o"></i><%=localAge%> Year</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-transgender"></i>
+                        <%=localSex.charAt(0).toUpperCase() + localSex.slice(1) %>
+                    </a></li>
+               </ul>
+           </nav>
+       </section> 
+   </div> 
+
+   <div class="breadcrumbs">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Summary based on the interview</h1>
+            </div>
+           
+        </div><!-- End row -->
+    </section><!-- End container -->
+</div>
+
+   <section class="container main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabs-warp question-tab">
+               
+                    <article class="question question-type-normal questioncard" id="question-page">
+                        <h2><a href="javascript:void(0)"><%=heading%></a></h2>
+                        
+                        
+                        <p class="question-desc" style="padding-bottom:0"><%=description%></p>
+                        
+                        <div class="divider"><span></span></div>
+                        <div class="clearfix"></div>
+
+                        <div class="row" id="result">
+                            <div class="col-md-6">
+                                <span class="badge badge-success"><i class="fa fa-fw fa-thumbs-up"></i>Normal</span>
+                                <ul>
+                                    <%  if(data.length){  
+                                            for(var i = 0;i < data.length;i++) { 
+                                                if(!data[i].is_emergency) { %>
+                                        <li><i class="icon-double-angle-right"></i><%=data[i].name%>	</li>
+                                    <% } } } %>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="badge badge-danger"><i class="fa fa-fw fa-thumbs-down"></i>Emergency</span>
+                                <ul>
+                                    <%  if(data.length){  
+                                        for(var i = 0;i < data.length;i++) { 
+                                            if(data[i].is_emergency) { %>
+                                        <li><i class="icon-double-angle-right"></i><%=data[i].name%>	</li>
+                                    <% } } } %>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="question question-type-normal questioncard" id="question-page">
+                            <h2><a href="javascript:void(0)">Result</a></h2>
+                            
+                            <div class="divider"><span></span></div>
+                            <div class="clearfix"></div>
+                            <p class="question-desc" style="margin-bottom:0; padding-bottom:0">  
+                                <% if(level == "no_risk") { %>
+                                    Follow preventive measures.
+                                <% } else if(level == "self_monitoring") { %>
+                                    Stay home and monitor your symptoms.
+                                <% } else if(level == "quarantine") { %> 
+                                    Quarantine
+                                <% } else if(level == "isolation_call") { %>
+                                    Consult health care provider. Avoid all contact.
+                                <% } else if(level == "call_doctor") { %>
+                                    Call a doctor, symptoms might not be directly linked to COVID-19.
+                                <% } else if(level == "isolation_ambulance") { %>
+                                    Call the emergency number. Avoid all contact.
+                                <% }
+                                
+                                %>
+                            </p>
+                    </article>
+                    
+                    <form action="/start" method="POST">
+                        <input type="hidden" id="lat" name="lat"/>
+                        <input type="hidden" id="long" name="long"/>
+                        <input type="hidden"  name="level" value="<%=level%>"/>
+                        <div align="center" style="padding-bottom: 30px;">
+                            <button type="submit" name="submit" class="button small color nextbtn" style="width:180px"> 
+                                Finish
+                            </button>
+                        </div>
+                    </form>
+            </div> 
+        </div> 
+    </div> 
+</section> 
+ 
+</div> 
+
+
+
+<%- include elements/footer.ejs %> 
+
+ 
+ 

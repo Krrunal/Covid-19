@@ -1,0 +1,18 @@
+
+<% var messages = getMessages(); %>
+<% if(messages.success){ %>
+
+<div class="alert alert-success" role="alert"><strong class="text-capitalize">Success!</strong>
+    <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><br>
+    <%=messages.success%>   
+</div>
+
+<% } else if(messages.error) { %>
+    
+    <div class="alert alert-danger" role="alert"><strong class="text-capitalize">Error!</strong>
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><br>
+        <%=messages.error%>   
+    </div>  
+
+<% } %>  
+ 

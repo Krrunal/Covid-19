@@ -1,0 +1,57 @@
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <ul class="navigation-left">
+            <li class="nav-item active" data-item="dashboard">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Bar-Chart"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item-hold" href="<%=nodeAdminUrl%>/logout/">
+                    <i class="nav-icon fa fa-sign-out"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <i class="sidebar-close i-Close" (click)="toggelSidebar()"></i>
+        <header><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <div class="logo" style="display: flex">
+                <img src="<%=nodeSiteUrl%>/backend/logo.png" alt=""><h5 style="margin: 3px 10px;"><%=usernameSession%></h5>
+            </div>
+        </header>
+
+        <!-- Submenu Dashboards -->
+        <div class="submenu-area" data-parent="dashboard">
+            <header>
+                <h6><%=siteTitle%></h6>
+                <p></p>
+                <p></p>
+            </header>
+            <ul class="childNav">
+                <li class="nav-item">
+                    <a href="<%=nodeAdminUrl%>">
+                        <i class="nav-icon fa fa-home"></i>
+                        <span class="item-name">Home</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="<%=nodeAdminUrl%>/patients/">
+                        <i class="nav-icon fa fa-users"></i>
+                        <span class="item-name">Patients List</span>
+                    </a>
+                </li>
+                   
+            </ul>
+        </div>
+    </div>
+</div>
+<!--=============== Left side End ================-->
+
+
+<%- include topbar.ejs %> 

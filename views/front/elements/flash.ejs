@@ -1,0 +1,23 @@
+
+<% var messages = getMessages(); %>
+<% if(messages.success){ %>
+
+<div class="alert-message success">
+    <i class="icon-ok"></i>
+    <p><span>success message</span><br>
+    <%=messages.success%> </p>
+</div>
+ 
+
+<% } else if(messages.error) { %>
+    
+    <div class="alert-message error">
+        <i class="icon-flag"></i>
+        <p><span>error message</span><br>
+        <%=messages.error%> </p>
+    </div>
+
+     
+<% } %>  
+ 
+ 

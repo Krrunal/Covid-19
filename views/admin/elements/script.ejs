@@ -1,0 +1,49 @@
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/jquery-3.3.1.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/bootstrap.bundle.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/script.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/sidebar.compact.script.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/customizer.script.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/apexcharts.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/echarts.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/echart.options.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/dashboard.v3.script.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/apexcharts.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/card.metrics.script.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/widgets-statistics.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/apexColumnChart.script.min.js"></script>
+        
+        <!-- Datatables -->
+        <script src="<%=nodeSiteUrl%>/backend/js/plugins/datatables.min.js"></script>
+        <script src="<%=nodeSiteUrl%>/backend/js/scripts/datatables.script.min.js"></script>
+        <!-- start - This is for export functionality only -->
+        <script src="http://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="http://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="http://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <!-- end - This is for export functionality only -->
+        
+        <script type="text/javascript">
+            $('#zero_configuration_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+            $('.close').on('click',function(){ $('.alert').removeClass('fade') })
+        </script>
+        
+        
+        
+        <!-- Password Validator -->
+        <script src="<%=nodeSiteUrl%>/backend/password/jquery.password.js"></script>
+        
+        <!--Validate JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI=" crossorigin="anonymous"></script>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,24 @@
+.error p, .error {
+    font-size: 12px;
+    color: red !important;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.auth-layout-wrap .auth-content {
+    min-width: 360px;
+}
+
+.card-icon-bg .card-body .content {
+    max-width: initial;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.astric {
+   color: red;
+   padding-left:5px;
+}

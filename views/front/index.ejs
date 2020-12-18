@@ -1,0 +1,68 @@
+<%- include elements/header.ejs %> 
+ 
+ 
+<div id="infocollect">
+	
+	<div align="center" class="loader" style="display:<%=data.showloader%>">
+		<img src="<%nodeSiteUrl%>/frontend/images/logo.png" alt="covid" class="loadingLogo" />
+	</div>
+
+	<div class="tabs-warp question-tab" id="contentTab"  style="display:<%=data.showcontent%>"> 
+					
+		<article class="question question-type-normal questioncard">
+			<h2>
+				<a href="javascript:void(0)">COVID-19 Symptom Checker</a>
+			</h2>
+
+			<div class="clearfix"></div>
+			<p class="question-desc">An application that mimics doctor's interview and gives you a preliminary diagnosis.</p>
+			
+			<%- include elements/flash.ejs %>
+
+			<form method="POST" action="/" id="login">
+				<div class="form-inputs clearfix">
+					<p class="login-text">
+						<input type="text" name="name" placeholder="Name" value="<%=data.name%>" >
+						<i class="icon-user"></i>
+						<span class="error"><%=errorData.name%></span>
+					</p>
+				</div>
+				
+				<div class="divide"></div>
+
+				<div class="form-inputs clearfix">
+					<p class="login-text">
+						<input type="number" name="age" placeholder="Age" value="<%=data.age%>" >
+						<i class="icon-circle-arrow-right"></i>
+						<span class="error"><%=errorData.age%></span>
+					</p>
+				</div>
+				
+				<div class="divide"></div>
+
+				<div class="radiocontainer">
+					<input type="radio" name="gender" id="male" value="male" class="input-hidden" />
+					<label for="male">
+						<i class="fa fa-male"></i>
+					</label>
+
+					<input type="radio" value="female" name="gender" id="female" class="input-hidden" />
+					<label for="female">
+						<i class="fa fa-female"></i>
+					</label>
+				</div>
+
+				<div class="footerbox">
+					<button  type="submit" name="submit" class="button small color nextbtn">Start 
+					</button>
+				</div>
+			</form> 
+							
+		</article>
+
+	</div> 
+	 
+	 
+</div> 
+<%- include elements/footer.ejs %> 
+

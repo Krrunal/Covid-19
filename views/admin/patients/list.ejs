@@ -1,0 +1,81 @@
+<%- include('../elements/header'); %>
+<div class="breadcrumb">
+    <ul>
+        <li><a href="<%=nodeSiteUrl%>/api/admin/dashboard/">Dashboard</a></li>
+        <li>Patients</li>
+    </ul>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="row mb-4">
+    <div class="col-md-12 mb-4">
+        <div class="card text-left">
+            <div class="card-body">
+                <h4 class="card-title mb-40">List of all patients user</h4>
+                
+                <%- include ../elements/flash.ejs %>    
+
+                <div class="table-responsive" id="patients-page">
+                    <table class="display table table-striped table-bordered" id="zero_configuration_table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th width="20">#</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Test Date</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Result</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(data.length){  
+                                for(var i = 0;i < data.length;i++) { %>
+                                <tr>
+                                    <td><a href="javascript:void(0)"><%=i+1%></a></td>
+                                    <td><%=data[i].username %></td>
+                                    <td>
+                                        <%if(data[i].gender == 0){  %>
+                                            <span class="label label-sm label-success">Male</span>
+                                        <% }else{ %> 
+                                            <span class="label label-sm label-success">Female</span> 
+                                        <%}%>
+                                    </td>
+                                    <td><%=data[i].age%></td>
+                                    <td><%=moment(data[i].appointment).format('YYYY-MM-DD hh:mm:ss')%></td>  
+                                    <td><%=data[i].latitude%></td>
+                                    <td><%=data[i].longitude%></td>
+                                    <td><span class="badge badge-success m-2" style="padding:5px"><%=data[i].result%></span></td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a onclick="return confirm('Are you sure you want to delete this ?')" href="<%=nodeAdminUrl%>/<%=controller%>/delete/<%=data[i].id%>" class="btn btn-secondary delete">Remove</a>
+                                        </div> 
+                                    </td>
+                                </tr>
+                                <% }  }  %> 
+                       </tbody>
+                        <tfoot>
+                            <tr>
+                                <th width="20">#</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Test Date</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Result</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</div> 
+<%- include('../elements/footer'); %>
+ 
+ 

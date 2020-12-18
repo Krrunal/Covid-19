@@ -1,0 +1,151 @@
+<%- include elements/header.ejs %> 
+ 
+<div id="wrap" class="grid_1200">
+	
+<div id="pageloader">
+        <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+     </div>
+    <div id="header-top">
+       <section class="container clearfix">
+           <nav class="header-top-nav">
+               <ul>
+                    <li><a href="javascript:void(0)"><i class="icon-user"></i>
+                        <%=localName.charAt(0).toUpperCase() + localName.slice(1) %>
+                    </a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-check-square-o"></i><%=localAge%> Year</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-transgender"></i>
+                        <%=localSex.charAt(0).toUpperCase() + localSex.slice(1) %>
+                    </a></li>
+               </ul>
+           </nav>
+       </section> 
+   </div> 
+
+   <div class="breadcrumbs">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1><%= isCountry == "false" ? "Please select all statements that apply to you" : text%> </h1>
+            </div>
+           
+        </div><!-- End row -->
+    </section><!-- End container -->
+</div>
+
+   <section class="container main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabs-warp question-tab">
+                    
+                    <form action="/diagnosis" method="POST" id="myform">
+                        <% if(isCountry == "true") { %>
+                            <article class="question question-type-normal questioncard" id="country-select">
+                                <h2>
+                                    <a href="javascript:void(0)">Countries and Territories around the world have the coronavirus COVID-19</a>
+                                </h2>
+                                    
+                                <div class="divider"><span></span></div>
+
+                                <div class="row">
+                                    <% for(var i = 0;i < data.length;i++) { %>
+                                        <div class="col-md-4">
+                                            <label class="checked_hed">
+                                                <input type="checkbox" name="<%=data[i].id%>" value="present"> <%=data[i].name%>
+                                                <span class="check_box_ex"></span>
+                                            </label>
+                                        </div>
+                                    <%  }  %>  
+                                </div>
+                                </article>
+                        <% } %>
+
+                        <% if(isCountry == "false") { %>
+                        <% if(type == "group_single") {  
+                             if(data.length > 0) { %>
+                        <article class="question question-type-normal questioncard" id="group-single">
+                            <h2>
+                                <a href="javascript:void(0)"><%=text%></a>
+                            </h2>
+                                 
+                            <div class="divider"><span></span></div>
+                            <div class="clearfix"></div>
+                            <div>
+                                <% for(var i = 0;i < data.length;i++) { 
+                                    for(var p = 0;p < data[i].choices.length - 1;p++) { %>
+                                <div class="radio-content">
+                                    <input id="<%=data[i].id%>_<%=p%>" type="radio" name="single" value="<%=data[i].id%>"/>
+                                    <label for="<%=data[i].id%>_<%=p%>"><span></span> <%=data[i].name%> </label>
+                                </div><br>
+                                <%  } }  %>
+                            </div>
+                        </article>
+
+                        <% } else { %> 
+                            <h1><%=text%></h1>    
+                        <% } } else { 
+
+                        if(data.length){  
+                        for(var i = 0;i < data.length;i++) { %>
+
+                        <article class="question question-type-normal questioncard" id="question-page">
+                            <h2>
+                                <a href="javascript:void(0)"><%=data[i].name%></a>
+                            </h2>
+                        
+                        
+                        <div class="clearfix"></div>
+                        <div class="divider"><span></span></div>
+
+                        <% if(type == "single")  {  
+                             if(singleExp) { %>
+                                <p class="question-desc"><%=singleExp%></p>
+                        <% } } %>
+                        
+                        <% if(data[i].explanation) { %>
+                            <p class="question-desc"><%=data[i].explanation%></p>
+                        <% }  %>
+                        
+    
+                        <div class="inputGroup"> 
+                            <%  for(var p = 0;p < data[i].choices.length;p++) { %>
+                                <input type="radio" class="button small" name="<%=data[i].id%>" id="<%=data[i].id%>_<%=p%>" value="<%=data[i].choices[p].id%>" />
+                                <label for="<%=data[i].id%>_<%=p%>"><%=data[i].choices[p].label%></label>
+                            <% } %> 
+
+                        </div>
+                        
+                    </article>
+
+                    <% }  } } %>
+                    
+                    <% } %>
+                    <div align="center" style="padding-bottom: 30px;">
+                        <button type="submit"  class="button small color nextbtn" style="width:180px"> 
+                            <%=shouldStop == "true" ? "Show Result" : "Next"%>
+                        </button>
+                    </div>
+                </form>   
+            </div> 
+        </div> 
+    </div> 
+</section> 
+ 
+</div> 
+
+
+
+<%- include elements/footer.ejs %> 
+
+<script>
+jQuery(document).ready(function() {
+    jQuery('.nextbtn').on("click",function() {
+        i = 0;
+        newText = "Please wait";
+        jQuery('.nextbtn').text(newText);
+        setInterval(function() {
+            jQuery('.nextbtn').text(newText+Array((++i % 4)+1).join(" "));
+        }, 500);
+    }) 
+})
+</script>
+ 

@@ -1,0 +1,32 @@
+ 
+<!-- js -->
+<script src="../../frontend/js/jquery.min.js"></script>
+<script src="../../frontend/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://use.fontawesome.com/23e04d2bb0.js"></script>
+<script>
+    jQuery(window).load(function() {
+        //jQuery("#pageloader").fadeOut(1000);
+        getLocation();
+        jQuery(".loader").fadeOut();
+        setTimeout(function(){  
+            jQuery("#contentTab").show();
+        }, 1500);
+    })
+   
+</script>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }  
+}
+
+function showPosition(position) { alert()
+    $('#lat').val(position.coords.latitude);
+    $('#long').val(position.coords.longitude)
+}
+</script>
+
+</body>
+</html>
